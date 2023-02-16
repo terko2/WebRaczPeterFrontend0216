@@ -43,7 +43,7 @@ const searchFilterFunction = (text) => {
 };
 
 
-
+//-----➣
 return(
   
   <SafeAreaView style={styles.container}>
@@ -105,11 +105,11 @@ return(
       </Text>
       <View style={styles.fixToText}>
         <Button
-          title="<--"
+          title="⇦"
           onPress={() => Alert.alert('Left button pressed')}
         />
         <Button
-          title="-->"
+          title="⇨"
           onPress={() => Alert.alert('Right button pressed')}
         />
       </View>

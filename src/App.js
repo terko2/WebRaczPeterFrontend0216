@@ -21,6 +21,7 @@ import Autok from "./sajatosztalyok/Autok"
 import Szalloda from "./sajatosztalyok/Szalloda"
 import Oldal from "./sajatosztalyok/Oldal"
 import Torlesautok from "./sajatosztalyok/Torlesautok"
+import Elerhetoseg from "./sajatosztalyok/Elerhetoseg"
 
 
 class App extends Component {
@@ -92,15 +93,18 @@ class App extends Component {
                 Autók
               </Link>
             </li>
+            <li className="nav-item">
+              <Link to={"/Elerhetoseg"} className="nav-link">
+              Elérhetőség
+              </Link>
+            </li>
+            
 
             <Link to={"/Oldal"} className="nav-link">
                 Oldal
               </Link>
 
-              <Link to={"/Torlesautok"} className="nav-link">
-              Törlés Autók
-              </Link>
-
+              
             <li className="nav-item">
               <Link to={"/Auto"} className="nav-link">
                 Beállítások
@@ -125,12 +129,21 @@ class App extends Component {
               </li>
             )}
 
-
-
             {showAdminBoard && (
               <li className="nav-item">
                 <Link to={"/admin"} className="nav-link">
                   Admin lap
+                </Link>
+              </li>
+            )}
+
+
+
+
+            {showAdminBoard && (
+              <li className="nav-item">
+                <Link to={"/Torlesautok"} className="nav-link">
+                Törlés Autók
                 </Link>
               </li>
             )}
@@ -210,6 +223,7 @@ class App extends Component {
             <Route path="/Szalloda" component={Szalloda} />
             <Route path="/Oldal" component={Oldal} />
             <Route path="/Torlesautok" component={Torlesautok} />
+            <Route path="/Elerhetoseg" component={Elerhetoseg} />
             
 
           </Switch>
