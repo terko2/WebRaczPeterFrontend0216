@@ -6,6 +6,7 @@ import {
   Button,
   View,SafeAreaView,
   Text,TouchableOpacity,TextInput,
+  Image,
   Alert,} from 'react-native';
   
   
@@ -18,7 +19,7 @@ const App = () =>{
 const [masterDataSource,setMasterDataSource] = useState([]);
 const [search,setSearch] = useState("");
 const [filteredDataSource,setFilteredDataSource]=useState([]);
-
+const image = {uri: 'https://media.istockphoto.com/id/1297855347/photo/white-plane-on-the-blue-runway-top-view-and-white-background-minimal-idea-concept-aircraft.jpg?b=1&s=170667a&w=0&k=20&c=nfSPqWMIMk_nhNDgz7Lk3uorrOAdGwQ4K2sBHYpXsxA='};
 const searchFilterFunction = (text) => {
   // Check if searched text is not blank
   if (text) {
@@ -48,6 +49,7 @@ return(
   
   <SafeAreaView style={styles.container}>
     <View>
+      
       <Text style={styles.title}>
        
       </Text>
@@ -124,6 +126,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     marginHorizontal: 16,
+  },
+  image: {
+    flex: 1,
+    justifyContent: 'center',
+    
   },
   title: {
     textAlign: 'center',

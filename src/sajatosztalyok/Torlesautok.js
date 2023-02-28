@@ -23,7 +23,7 @@ export default class App extends Component {
 
   async getMovies() {
     try {
-      const response = await fetch(IP.ipcim+'kolcsonzes');
+      const response = await fetch(IP.ipcim+'auto');
       const json = await response.json();
       //alert(JSON.stringify(json))
       console.log(json)
@@ -36,18 +36,14 @@ export default class App extends Component {
     }
   }
 
-  
-  componentDidMount() {
-    this.getMovies();
-  }
-
-  szavazat=(szam)=>{
+  //-------------Feltöltés------------------
+  feltoltes=(szam)=>{
     //alert(szam)
     var adatok={
       bevitel1:szam
     }
     alert(adatok.bevitel1)
-    const response = fetch(IP.ipcim+'szavazat',{
+    const response = fetch('http://192.168.6.7:3000/feltoltes',{
       method: "POST",
       body: JSON.stringify(adatok),
       headers: {"Content-type": "application/json; charset=UTF-8"}
@@ -55,6 +51,28 @@ export default class App extends Component {
       const text =  response.text();
       console.log(text)
   }
+
+  torles=(szam)=>{
+    //alert(szam)
+    var adatok={
+      bevitel1:szam
+    }
+    alert(adatok.bevitel1)
+    const response = fetch(IP.ipcim+'autoktorles',{
+      method: "DELETE",
+      body: JSON.stringify(adatok),
+      headers: {"Content-type": "application/json; charset=UTF-8"}
+    });
+      
+      console.log(response)
+  }
+
+  
+  componentDidMount() {
+    this.getMovies();
+  }
+
+  
 
 //Gomb
   gombok=(gomb)=>{
@@ -95,34 +113,31 @@ atalakit=(parameter)=>{
 
 
                 <ImageBackground source={image} resizeMode="cover" style={styles.image}>
-              <Text style={{fontSize:20,color:'#68BBE3',textAlign:'left'}}>
+              <Text style={{fontSize:20,color:'black',textAlign:'center'}}>
                 {item.auto_nev}
                 </Text>
-
-                <Text style={{fontSize:20,color:'white',textAlign:'right',marginRight:10}}>
-                { this.atalakit(   item.kolcsonzes_datum)}
-                </Text>
-              
-
-  
                 <TouchableOpacity
-          style={styles.button_i}
-          onPress={async ()=>this.szavazat(item.auto_adatok)}
+          style={styles.button}
+          onPress={async ()=>this.feltoltes(item.auto_neve)}
         >
-          <Text style={{color:'black',fontSize:15}}>i</Text>
+          <Text style={{fontStyle:"italic",color:'white',fontSize:20,}}>⇑ </Text>
+          
           
         </TouchableOpacity>   
+        <Text style={{fontStyle:"italic",color:'black',fontSize:20,textAlign:'center'}}>Feltöltés</Text>
 
+                
+
+  
+                
 
                
                
 
-              <Image   source={{uri: IP.ipcim + item.auto_kep}} style={{width:230,height:170,alignSelf:'left',transform:[{rotate:'328deg'}]}}   />
+              <Image   source={{uri: IP.ipcim + item.auto_kep}} style={{width:230,height:170,alignSelf:'center',transform:[{rotate:'328deg'}]}}   />
               
-              <Text style={{fontSize:20,color:'black',textAlign:'left'}}>
-                Az ár {item.kolcsonzes_nap} napra:
-              </Text>
-              <Text style={{fontSize:18,color:'black',textAlign:'Left'}}>
+              
+              <Text style={{fontSize:18,color:'black',textAlign:'center'}}>
                 {item.auto_ar}
                 </Text>
                 { item.auto_akcio===''    ? 
@@ -137,18 +152,16 @@ atalakit=(parameter)=>{
                 {item.auto_akcios_ar}
                 </Text>
 
-              <Text style={{fontSize:15,color:'black',textAlign:'center'}}>
-              A kölcsönzött telefonszáma: +36{item.kolcsonzes_telefon}
-              </Text>
+              
               
               <TouchableOpacity
           style={styles.button}
-          onPress={async ()=>this.szavazat(item.auto_nev)}
+          onPress={async ()=>this.torles(item.auto_id)}
         >
           <Text style={{fontStyle:"italic",color:'white',fontSize:20,}}>Törlés</Text>
           
+          
         </TouchableOpacity>   
-
 
         
      

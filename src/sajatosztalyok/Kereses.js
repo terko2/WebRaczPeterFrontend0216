@@ -21,6 +21,23 @@ export default class FetchExample extends React.Component {
       bevitel1:szam
     }
 
+//-----Információs Gomb
+    //Gomb
+  /*gombok=(gomb)=>{
+    //alert(szam)
+    var adatok={
+      button_i:gomb
+    }
+    alert(adatok.button_i)
+    const response = fetch(IP.ipcim+'auto_adatok',{
+      method: "POST",
+      body: JSON.stringify(adatok),
+      headers: {"Content-type": "application/json; charset=UTF-8"}
+    });
+      const text =  response.text();
+      console.log(text)
+  }*/
+//--------
   fetch(IP.ipcim + "szavazatfelvitel", {
       method: "POST",
       body: JSON.stringify(bemenet),
@@ -88,10 +105,10 @@ export default class FetchExample extends React.Component {
       <View style={{flex: 1, paddingTop:20}}>
 {/*-----------------------------------------------------------Keresés  */}
 
-        <Text style={{marginTop:50, marginLeft:20,marginRight:20}}>Add meg a keresendő szót:</Text>
+        <Text style={{marginTop:50, marginLeft:490,marginRight:20,fontWeight:"bold"}}>Add meg a keresendő szót:</Text>
         <TextInput
-        style={{height: 40,  marginLeft:20,marginRight:20, marginBottom:20}}
-        placeholder="Szó megadása"
+        style={{height: 30,  marginLeft:10,marginRight:10, marginBottom:10,textAlign:"center"}}
+        placeholder=""
         onChangeText={(beirtszoveg)=>this.setState({szo:beirtszoveg})}
         value={this.state.szo}
       />
@@ -102,27 +119,33 @@ export default class FetchExample extends React.Component {
       >
         <Text style={{color:"white",fontWeight:"bold",fontSize:15}}  >Keresés</Text>
       </TouchableOpacity>
-{/*--------------------------------------------------------- Találatok */}       
+      
+{/*--------------------------------------------------------- Találatok */}    
+  
         <FlatList
           data={this.state.dataSource}
+          keyExtractor={({ auto_id }, index) => auto_id}
           renderItem={({item}) => 
 
           <View >
           <Text style={{color:"brown",fontSize:20,textAlign:"center",marginTop:15,marginBottom:5}}   >{item.film_cim} </Text>
           <Image  source={{uri: IP.ipcim + item.auto_kep}} style={{width:300,height:300,marginLeft:"auto",marginRight:"auto"}} />  
-
+          <Text style={{fontSize:20,color:'black',textAlign:'center'}}>
+                {item.auto_nev}
+                </Text>
           <TouchableOpacity
         style={styles.kekgomb}
         onPress={async ()=>this.szavazat(item.auto_id)}
       >
-        <Text style={{color:"white",fontWeight:"bold",fontSize:15}}  >Erre szavazok</Text>
+        
+        <Text style={{color:"white",fontWeight:"bold",fontSize:15}}  >Foglalás</Text>
       </TouchableOpacity>
           </View>
         
         }
 
         
-          keyExtractor={({auto_id}, index) => auto_id}
+          
         />
       </View>
     );
@@ -138,5 +161,17 @@ const styles = StyleSheet.create({
     width:300,
     marginLeft:"auto",
     marginRight:"auto",
-  }
+  },
+  button_i: {
+    flex:1,
+    textAlign:"center",
+    alignItems: "center",
+    backgroundColor: "#68BBE3",
+    padding: 10,
+    width:25,
+    borderRadius:10,
+    marginLeft:1080,
+    marginRight:0
+
+  },
 });

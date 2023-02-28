@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import {StyleSheet, ActivityIndicator, FlatList, Text, View, Image, TouchableOpacity,ImageBackground } from 'react-native-web';
 
@@ -95,18 +94,18 @@ export default class App extends Component {
               <Text style={{fontSize:20,color:'#68BBE3',textAlign:'left'}}>
                 {item.el_nev}
                 </Text>
-
+                <TouchableOpacity
+          style={styles.button_i_2}
+          onPress={async ()=>this.szavazat(item.auto_adatok)}
+        >
+          <Text style={{color:'black',fontSize:20}}>ⓘ</Text>
+          
+        </TouchableOpacity>   
                 
               
 
   
-                <TouchableOpacity
-          style={styles.button_i}
-          onPress={async ()=>this.szavazat(item.auto_adatok)}
-        >
-          <Text style={{color:'black',fontSize:15}}>i</Text>
-          
-        </TouchableOpacity>   
+               
 
 
                
@@ -122,15 +121,13 @@ export default class App extends Component {
               <Text style={{fontSize:15,color:'black',textAlign:'left'}}>
                Elérhetőségi telefonszáma: +36{item.eler_szam}
               </Text>
-              
-              <TouchableOpacity
-          style={styles.button}
-          onPress={async ()=>this.szavazat(item.auto_nev)}
-        >
-          <Text style={{fontStyle:"italic",color:'white',fontSize:20}}>Foglalás</Text>
-          
-        </TouchableOpacity>   
 
+
+            
+
+
+
+              
 
         
      
@@ -182,11 +179,16 @@ const styles = StyleSheet.create({
     padding: 10,
     width:25,
     borderRadius:10,
-    marginLeft:1080,
-    marginRight:0
+  
 
   },
 
+  button_i_2:{
+    flex:1,
+    textAlign:"center",
+    alignItems: "center",
+    marginRight:500,
+  },
 
   countContainer: {
     alignItems: "center",
