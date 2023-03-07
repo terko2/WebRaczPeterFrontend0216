@@ -73,7 +73,9 @@ export default class FetchExample extends React.Component {
     //alert("hello")
     var bemenet={
       bevitel1:this.state.szo
+
     }
+    alert(this.state.szo)
 
   fetch(IP.ipcim + "keres", {
       method: "POST",
@@ -84,7 +86,7 @@ export default class FetchExample extends React.Component {
   )
   .then(x => x.json())
   .then(y => {
-    //alert(JSON.stringify(y))
+    alert(JSON.stringify(y))
     this.setState({ dataSource   :  y   })
   }
   );

@@ -53,29 +53,23 @@ class App extends Component {
   }
 
   render() {
-    const { currentUser, showModeratorBoard, showAdminBoard } = this.state;
+    const { currentUser,  showAdminBoard } = this.state;
 
     return (
       
       <div>
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-      <Navbar.Brand href="#home">
+      <Navbar.Brand href="/Kereses">
         
         Nyaralás
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
-        <Link to={"/"} className="navbar-brand">
-            bezKoder
-          </Link>
+        
           
           <div className="navbar-nav mr-auto">
-            <li className="nav-item">
-              <Link to={"/home"} className="nav-link">
-                Home
-              </Link>
-            </li>
+           
 
             <li className="nav-item">
               <Link to={"/Kereses"} className="nav-link">
@@ -101,7 +95,7 @@ class App extends Component {
             
 
             <Link to={"/Oldal"} className="nav-link">
-                Oldal
+                Autó Galéria
               </Link>
 
               
@@ -111,31 +105,19 @@ class App extends Component {
               </Link>
             </li>
 
-            {showModeratorBoard && (
+           {/* {showModeratorBoard && (
               <li className="nav-item">
                 <Link to={"/mod"} className="nav-link">
                   Moderator Board
                 </Link>
               </li>
             )}
+           /*
+          --------showModeratorBoard,---------}
 
 {/*----------Admin menü pont-------*/}
 
-            {showAdminBoard && (
-              <li className="nav-item">
-                <Link to={"/admin"} className="nav-link">
-                  Admin Board
-                </Link>
-              </li>
-            )}
-
-            {showAdminBoard && (
-              <li className="nav-item">
-                <Link to={"/admin"} className="nav-link">
-                  Admin lap
-                </Link>
-              </li>
-            )}
+            
 
 
 
@@ -150,17 +132,10 @@ class App extends Component {
 
 
 
-            {currentUser && (
-              <li className="nav-item">
-                <Link to={"/user"} className="nav-link">
-                  User
-                </Link>
-              </li>
-            )}
           </div>
           
-          <Nav.Link href="#features">Features</Nav.Link>
-          <Nav.Link href="#pricing">Pricing</Nav.Link>
+          
+          
           <NavDropdown title="Továbbiak" id="collasible-nav-dropdown">
             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
             <NavDropdown.Item href="#action/3.2">
