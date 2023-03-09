@@ -87,17 +87,18 @@ class App extends Component {
                 Autók
               </Link>
             </li>
+
+            <Link to={"/Oldal"} className="nav-link">
+                Autó Galéria
+              </Link>
+
+
             <li className="nav-item">
               <Link to={"/Elerhetoseg"} className="nav-link">
               Elérhetőség
               </Link>
             </li>
             
-
-            <Link to={"/Oldal"} className="nav-link">
-                Autó Galéria
-              </Link>
-
               
             <li className="nav-item">
               <Link to={"/Auto"} className="nav-link">
@@ -166,13 +167,13 @@ class App extends Component {
             <div className="navbar-nav ml-auto">
               <li className="nav-item">
                 <Link to={"/login"} className="nav-link">
-                  Login
+                  Bejelentkezés
                 </Link>
               </li>
 
               <li className="nav-item">
                 <Link to={"/register"} className="nav-link">
-                  Sign Up
+                  Regisztráció
                 </Link>
               </li>
             </div>
